@@ -3,14 +3,14 @@
 #SBATCH --nodes=4  #number of requested nodes
 #SBATCH --ntasks-per-node=40  #tasks/cores on each node
 #SBATCH --partition short #choices include test, short, medium, long, bigmem (see https://ucm-it.github.io/hpc_docs/)
-#SBATCH -M merced # add this flag if you want to submit jobs to MERCED cluster
 #SBATCH --mem=96G  #total memory requested, use 0 if you want to use entire node memory
 #SBATCH --time=0-0:30:00 # hh:mm::ss
 #SBATCH --output=output_%j.log  #the output file containing information from the standard output
+#SBATCH --export=ALL
+# #SBATCH -M merced # add this flag if you want to submit jobs to MERCED cluster
 # #SBATCH --mail-user=pmyint@ucmerced.edu
 # #SBATCH --gres=gpu:X # uncomment this line if you need GPU access, replace X with number of GPU you need
 # #SBATCH -w <selected_node> #uncomment this line if you want to select specific available node to run 
-#SBATCH --export=ALL
 
 # TOTAL_TASKS = Number of nodes times the number of tasks per node
 TOTAL_TASKS=160

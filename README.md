@@ -18,8 +18,8 @@ Github repository for getting started with LPJ-GUESS on UC Merced HPC clusters, 
 	- `data_LPJ_GUESS`: contains input files and other types of data 
 2. Go to `src_LPJ_GUESS` and modify the `set(CONDA_PATH "/home/pmyint/anaconda3")` line in CMakeLists.txt to the path of your Anaconda directory.
 3. While in`src_LPJ_GUESS`, create a build directory and enter it. This is the directory where the executable will be located.
-    	- `$ mkdir build`
-    	- `$ cd build`
+	- `$ mkdir build`
+	- `$ cd build`
 4. From the build directory, type `cmake ..`
 	- The `..` points `cmake` to the root directory of the project, where the root CMakeLists.txt is located.
 	- CMake will configure the project and generate all of the needed build files automatically.
