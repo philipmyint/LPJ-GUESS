@@ -24,7 +24,7 @@ endif()
 # Unit tests are disabled in old VS 6.0, since CATCH doesn't compile in such 
 # an old compiler.
 if (NOT MSVC_VERSION EQUAL "1200")
-  set(UNIT_TESTS "OFF" CACHE BOOL "Whether to include unit tests")
+  set(UNIT_TESTS "ON" CACHE BOOL "Whether to include unit tests")
 endif()
 
 if (UNIX)
