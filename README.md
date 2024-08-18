@@ -1,7 +1,7 @@
 # LPJ-GUESS
 ## About
 
-Repository for getting started with LPJ-GUESS on UC Merced HPC clusters, based on earlier modifications to that code from Weichao Guo. Contact info: Philip Myint (pmyint@ucmerced.edu). This README was created on 2024/08/18 (August 8, 2024). This date will be referred to below as the "current date".
+Github repository for getting started with LPJ-GUESS on UC Merced HPC clusters, based on earlier modifications to that code from Weichao Guo. The repository was created on 2024/08/18 (August 8, 2024) by Philip Myint (pmyint@ucmerced.edu). This date will be referred to below as the "current date".
 
 ## Getting Started
 
