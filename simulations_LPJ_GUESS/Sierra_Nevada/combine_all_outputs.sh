@@ -3,7 +3,7 @@ TOTAL_TASKS=40
 
 #set -e
 
-mkdir -p all_output
+mkdir -p all_outputs
 
 function append_files {
     local number_of_jobs=$1
@@ -31,4 +31,4 @@ do
 done
 #cat run*/guess.log > guess.log
 
-mv *.out ./all_output/
+mv *.out ./all_outputs/

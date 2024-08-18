@@ -30,7 +30,7 @@ Repository for getting started with LPJ-GUESS on UC Merced HPC clusters, based o
 ## Running LPJ-GUESS
 
 Go to wherever your simulation directories are (e.g., `simulations_LPJ_GUESS/test` or `simulations_LPJ_GUESS/Sierra_Nevada`), modify `submit.sh` and other files as necessary, and submit the job by typing `sbatch submit.sh`. The examples are set up assuming that all the `.ins` input files (e.g., `Sierra_Nevada.ins`, `europe.ins`, `landcover.ins`), as well as the gridlist input file (e.g., `gridlist_sn.txt`) are located in the same directory where the job will be run.
-	- The `submit.sh` script will partition the set of gridlist coordinates into a set of TOTAL_TASKS (=40 for `test` and =160 for `Sierra_Nevada` examples) coordinates. Each 
-	of these smaller gridlist_files will be put into a separate `run` directory that is labeled with the task (MPI process) number.
-	- The last part of `submit.sh` collects/merges the different `run` outputs and into a single directory `all_output`. For convenience, the example directories also include a	    `combine_all_outputs.sh` script that does just this last collection/merge step. There is also a `make_clean.sh` script that removes all the `run` subdirectories and keeps 
-	only the `all_outputs` subdirectory.
+1. The `submit.sh` script will partition the set of gridlist coordinates into a set of TOTAL_TASKS (=40 for `test` and =160 for `Sierra_Nevada` examples) coordinates. Each 
+of these smaller gridlist_files will be put into a separate `run` directory that is labeled with the task (MPI process) number.
+2. The last part of `submit.sh` collects/merges the different `run` outputs and into a single directory `all_output`. For convenience, the example directories also include a	    `combine_all_outputs.sh` script that does just this last collection/merge step. There is also a `make_clean.sh` script that removes all the `run` subdirectories and keeps 
+only the `all_outputs` subdirectory.

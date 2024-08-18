@@ -111,7 +111,7 @@ echo "Now merging the output from the different tasks/cores ..."
 
 #set -e
 
-mkdir -p all_output
+mkdir -p all_outputs
 
 function append_files {
     local number_of_jobs=$TOTAL_TASKS
@@ -139,5 +139,5 @@ do
 done
 #cat run*/guess.log > guess.log
 
-mv *.out ./all_output/
+mv *.out ./all_outputs/
 echo "Done with merging the output"
