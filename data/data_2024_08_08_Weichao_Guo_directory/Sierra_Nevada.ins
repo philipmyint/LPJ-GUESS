@@ -1,0 +1,30 @@
+!
+! Instruction file with European species to be used with the 
+! CRU I/O module.
+!
+
+import "europe.ins"
+import "landcover.ins"
+!import "crop.ins"
+!import "crop_c.ins"
+!import "crop_n.ins"
+
+!///////////////////////////////////////////////////////////////////////////////////////
+! Forcing Data & gridlists
+!
+
+param "file_gridlist" (str "/home/wguo5/scratch/guessrun/data/gridlist_sn.txt")
+param "file_soil" (str "/home/wguo5/scratch/guessrun/data/soil_lpj.grd")
+param "file_soil_depth" (str "/home/wguo5/scratch/guessrun/data/soil_depth.grd")
+
+param "file_co2"      (str "/home/wguo5/scratch/guessrun/data/co2_rcp85_1950_2099.txt")
+param "file_temp" (str "/home/wguo5/scratch/guessrun/data/tmp_sn_HadGEM2-ES365_rcp85_1950_2099.grd")  ! temperature
+param "file_dtr" (str "/home/wguo5/scratch/guessrun/data/dtr_sn_HadGEM2-ES365_rcp85_1950_2099.grd")  ! diurnal temperature range
+param "file_prec" (str "/home/wguo5/scratch/guessrun/data/prec_sn_HadGEM2-ES365_rcp85_1950_2099.grd")  ! precipitation
+param "file_sun"  (str "/home/wguo5/scratch/guessrun/data/clo_sn_HadGEM2-ES365_rcp85_1950_2099.grd")  ! sunshine
+param "file_wind"  (str "/home/wguo5/scratch/guessrun/data/wind_sn_HadGEM2-ES365_rcp85_1950_2099.grd")  ! wind speed
+param "file_lght"  (str "/home/wguo5/scratch/guessrun/data/lght_sn_HadGEM2-ES365_rcp85_1950_2099.grd")  ! lightning
+
+
+! N deposition (blank string to use constant pre-industrial level of 2 kgN/ha/year)
+param "file_ndep"     (str "")
