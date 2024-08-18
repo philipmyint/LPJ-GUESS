@@ -1,0 +1,290 @@
+
+Keywords defined within block "global":
+
+title           Title for run
+nyear_spinup    Number of simulation years to spinup for
+vegmode         Vegetation mode ("INDIVIDUAL", "COHORT", "POPULATION")
+ifbgestab       Whether background establishment enabled (0,1)
+ifsme           Whether spatial mass effect enabled for establishment (0,1)
+ifstochmort     Whether mortality stochastic (0,1)
+ifstochestab    Whether establishment stochastic (0,1)
+estinterval     Interval for establishment of new cohorts (years)
+distinterval    Generic patch-destroying disturbance interval (years)
+iffire          Whether fire enabled (0,1)
+ifdisturb       Whether generic patch-destroying disturbance enabled (0,1)
+ifcalcsla       Whether SLA calculated from leaf longevity
+ifcalccton      Whether leaf C:N min calculated from leaf longevity
+ifcdebt         Whether to allow C storage
+npatch          Number of patches simulated
+npatch_secondarystand
+                Number of patches simulated in secondary stands
+reduce_all_stands
+                Whether to reduce equal percentage of all stands of a stand typ
+                e at land cover change
+age_limit_reduce
+                Minimum age of stands to reduce at land cover change
+patcharea       Patch area (m2)
+wateruptake     Water uptake mode ("WCONT", "ROOTDIST", "SMART", "SPECIESSPECIF
+                IC")
+nrelocfrac      Fractional nitrogen relocation from shed leaves & roots
+nfix_a          first term in nitrogen fixation eqn
+nfix_b          second term in nitrogen fixation eqn
+ifcentury       Whether to use CENTURY SOM dynamics (default standard LPJ)
+ifnlim          Whether plant growth limited by available nitrogen
+freenyears      Number of years to spinup without nitrogen limitation
+ifsmoothgreffmort
+                Whether to vary mort_greff smoothly with growth efficiency (0,1
+                )
+ifdroughtlimitedestab
+                Whether establishment drought limited (0,1)
+ifrainonwetdaysonly
+                Whether it rains on wet days only (1), or a little every day (0
+                );
+ifbvoc          Whether or not BVOC calculations are performed (0,1)
+run_landcover   Landcover version
+run_urban       Whether urban land is to be simulated
+run_crop        Whether crop-land is to be simulated
+run_pasture     Whether pasture is to be simulated
+run_forest      Whether managed forest is to be simulated
+run_natural     Whether natural vegetation is to be simulated
+run_peatland    Whether peatland is to be simulated
+run_barren      Whether barren land is to be simulated
+ifslowharvestpool
+                If a slow harvested product pool is included in patchpft.
+ifintercropgrass
+                Whether intercrop growth is allowed
+ifcalcdynamic_phu
+                Whether to calculate dynamic potential heat units
+gross_land_transfer
+                Whether to use gross land transfer: simulate gross lcc (1); rea
+                d landcover transfer matrix input file (2); read stand type tra
+                nsfer matrix input file (3), or not (0)
+ifprimary_lc_transfer
+                Whether to use primary/secondary land transition info in landco
+                ver transfer input file (1). or not (0)
+ifprimary_to_secondary_transfer
+                Whether to use primary-to-secondary land transition info (withi
+                n land cover type) in landcover transfer input file (1). or not
+                 (0)
+transfer_level  Pooling level of land cover transitions; 0: one big pool; 1: la
+                nd cover-level; 2: stand type-level
+ifdyn_phu_limit Whether to limit dynamic phu calculation to a time period
+iftransfer_to_new_stand
+                Whether to create new stands in transfer_to_new_stand()
+nyear_dyn_phu   Number of years to calculate dynamic phu
+printseparatestands
+                Whether to print multiple stands within a land cover type (exce
+                pt cropland) separately
+iftillage       Whether to simulate tillage by increasing soil respiration
+textured_soil   Use silt/sand fractions specific to soiltype
+disturb_pasture Whether fire and disturbances enabled on pastures (0,1)
+grassforcrop    grassforcrop
+state_path      State files directory (for restarting from, or saving state fil
+                es)
+restart         Whether to restart from state files
+save_state      Whether to save new state files
+state_year      Save/restart year. Unspecified means just after spinup
+pft             Header for block defining PFT
+
+Keywords defined within block "pft":
+
+include         Include PFT in analysis
+lifeform        Lifeform ("TREE" or "GRASS")
+landcover       Landcovertype ("URBAN", "CROP", "PASTURE", "FOREST", "NATURAL",
+                 "PEATLAND" or "BARREN")
+selection       Name of pft selection
+phenology       Phenology ("EVERGREEN", "SUMMERGREEN", "RAINGREEN", "CROPGREEN"
+                 or "ANY")
+leafphysiognomy Leaf physiognomy ("NEEDLELEAF" or "BROADLEAF")
+phengdd5ramp    GDD on 5 deg C base to attain full leaf cover
+wscal_min       Water stress threshold for leaf abscission (raingreen PFTs)
+pathway         Biochemical pathway ("C3" or "C4")
+pstemp_min      Approximate low temp limit for photosynthesis (deg C)
+pstemp_low      Approx lower range of temp optimum for photosynthesis (deg C)
+pstemp_high     Approx higher range of temp optimum for photosynthesis (deg C)
+pstemp_max      Maximum temperature limit for photosynthesis (deg C)
+lambda_max      Non-water-stressed ratio of intercellular to ambient CO2 pp
+rootdist        Fraction of roots in each soil layer (first value=upper layer)
+gmin            Canopy conductance not assoc with photosynthesis (mm/s)
+emax            Maximum evapotranspiration rate (mm/day)
+respcoeff       Respiration coefficient (0-1)
+cton_root       Reference Fine root C:N mass ratio
+cton_sap        Reference Sapwood C:N mass ratio
+nuptoroot       Maximum nitrogen uptake per fine root
+km_volume       Michaelis-Menten kinetic parameters for nitrogen uptake
+fnstorage       fraction of sapwood (root for herbaceous pfts) that can be used
+                 as a nitrogen storage scalar
+reprfrac        Fraction of NPP allocated to reproduction
+turnover_leaf   Leaf turnover (fraction/year)
+turnover_root   Fine root turnover (fraction/year)
+turnover_sap    Sapwood turnover (fraction/year)
+wooddens        Sapwood and heartwood density (kgC/m3)
+crownarea_max   Maximum tree crown area (m2)
+k_allom1        Constant in allometry equations
+k_allom2        Constant in allometry equations
+k_allom3        Constant in allometry equations
+k_rp            Constant in allometry equations
+k_latosa        Tree leaf to sapwood xs area ratio
+sla             Specific leaf area (m2/kgC)
+cton_leaf_min   Minimum leaf C:N mass ratio
+ltor_max        Non-water-stressed leaf:fine root mass ratio
+litterme        Litter moisture flammability threshold (fraction of AWC)
+fireresist      Fire resistance (0-1)
+tcmin_surv      Min 20-year coldest month mean temp for survival (deg C)
+tcmin_est       Min 20-year coldest month mean temp for establishment (deg C)
+tcmax_est       Max 20-year coldest month mean temp for establishment (deg C)
+twmin_est       Min warmest month mean temp for establishment (deg C)
+twminusc        Stupid larch parameter
+gdd5min_est     Min GDD on 5 deg C base for establishment
+k_chilla        Constant in equation for budburst chilling time requirement
+k_chillb        Coefficient in equation for budburst chilling time requirement
+k_chillk        Exponent in equation for budburst chilling time requirement
+parff_min       Min forest floor PAR for grass growth/tree estab (J/m2/day)
+alphar          Shape parameter for recruitment-juv growth rate relationship
+est_max         Max sapling establishment rate (indiv/m2/year)
+kest_repr       Constant in equation for tree estab rate
+kest_bg         Constant in equation for tree estab rate
+kest_pres       Constant in equation for tree estab rate
+longevity       Expected longevity under lifetime non-stressed conditions (yr)
+greff_min       Threshold for growth suppression mortality (kgC/m2 leaf/yr)
+leaflong        Leaf longevity (years)
+intc            Interception coefficient
+drought_tolerance
+                Drought tolerance level (0 = very -> 1 = not at all) (unitless)
+ga              aerodynamic conductance (m/s)
+eps_iso         isoprene emission capacity (ug C g-1 h-1)
+seas_iso        whether (1) or not (0) isoprene emissions show seasonality
+eps_mon         monoterpene emission capacity (ug C g-1 h-1)
+storfrac_mon    fraction of monoterpene production that goes into storage pool 
+                (-)
+harv_eff        Harvest efficiency
+harvest_slow_frac
+                Fraction of harvested products that goes into carbon depository
+                 for long-lived products like wood
+turnover_harv_prod
+                Harvested products turnover (fraction/year)
+res_outtake     Fraction of residue outtake at harvest
+sdatenh         sowing day northern hemisphere
+sdatesh         sowing day southern hemisphere
+lgp_def         default lgp
+sd_adjust       whether sowing date adjusting equation is used
+sd_adjust_par1  parameter 1 in sowing date adjusting equation
+sd_adjust_par2  parameter 2 in sowing date adjusting equation
+sd_adjust_par3  parameter 3 in sowing date adjusting equation
+hlimitdatenh    last harvest date in the northern hemisphere
+hlimitdatesh    last harvest date in the southern hemisphere
+tb              base temperature for heat unit calculation
+trg             upper temperature limit for vernalisation effect
+pvd             number of vernalising days required
+vern_lag        lag in days after sowing before vernalization starts
+isintercropgrass
+                Whether this pft is allowed to grow in intercrop period
+psens           sensitivity to the photoperiod effect [0-1]
+pb              basal photoperiod (h)
+ps              saturating photoperiod (h)
+phu             default potential heat units for crop maturity
+phu_calc_quad   whether linear equation used for calculating potential heat uni
+                ts (Bondeau method)
+phu_calc_lin    minimum potential heat units required for crop maturity (Bondea
+                u method) (degree-days)
+phu_min         minimum potential heat units for crop maturity (Bondeau method)
+phu_max         maximum potential heat units for crop maturity (Bondeau method)
+phu_red_spring_sow
+                reduction factor of potential heat units in spring crops (Bonde
+                au method)
+phu_interc      intercept for the linear phu equation (Bondeau method)
+ndays_ramp_phu  number of days of phu decrease in the linear phu equation (Bond
+                eau method)
+fphusen         growing season fract. when lai starts decreasing
+shapesenescencenorm
+                Type of senescence curve
+flaimaxharvest  Fraction of maximum lai when harvest prescribed
+aboveground_ho  Whether aboveground structures are harvested
+harv_eff_ic     Harvest efficiency of covercrop grass
+ifsdautumn      Whether sowing date in autumn is to be calculated
+tempautumn      Upper temperature limit for winter sowing
+tempspring      Lower temperature limt for spring sowing
+maxtemp_sowing  Upper minimum temperature limit for crop sowing
+hiopt           Optimal harvest index
+himin           Minimal harvest index
+frootstart      Initial root mass fraction of total plant
+frootend        Root mass fraction of total plant at harvest
+laimax          Maximum lai (crop grass only)
+forceautumnsowing
+                Whether autumn sowing is forced independent of climate
+fertdates       Fertilisation dates, relative to sowing
+fertrate        Fraction of total fertilisation at fertilisation event
+N_appfert       Fertilisation rate
+T_vn_min        Min temperature for vernalization
+T_vn_opt        Opt temperature for vernalization
+T_vn_max        Max temperature for vernalization
+T_veg_min       Min temperature for the vegetative phase
+T_veg_opt       Opt temperature for the vegetative phase
+T_veg_max       Max temperature for the vegetative phase
+T_rep_min       Min temperature for the reproductive phase
+T_rep_opt       Opt temperature for the reproductive phase
+T_rep_max       Max temperature for the reproductive phase
+photo           Parameters for photoperiod
+dev_rate_veg    Maximal vegetative develoment rate
+dev_rate_rep    Maximal reproductive develoment rate
+a1              a1 parameter for allocation with N stress
+b1              b1 parameter for allocation with N stress
+c1              c1 parameter for allocation with N stress
+d1              d1 parameter for allocation with N stress
+a2              a2 parameter for allocation with N stress
+b2              b2 parameter for allocation with N stress
+c2              c2 parameter for allocation with N stress
+d2              d2 parameter for allocation with N stress
+a3              a3 parameter for allocation with N stress
+b3              b3 parameter for allocation with N stress
+c3              c3 parameter for allocation with N stress
+d3              d3 parameter for allocation with N stress
+param           Header for custom parameter block
+
+Keywords defined within block "param":
+
+str             String value for custom parameter
+num             Numerical value for custom parameter
+st              Header for block defining StandType
+
+Keywords defined within block "st":
+
+stinclude       Include StandType in analysis
+landcover       Landcovertype ("URBAN", "CROP", "PASTURE", "FOREST", "NATURAL",
+                 "PEATLAND" or "BARREN")
+intercrop       Cover crop ("NOINTERCROP" or "NATURALGRASS")
+naturalveg      Natural pfts ("NONE", "GRASSONLY" or "ALL")
+reestab         Re-establishment ("NONE", "RESTRICTED" or "ALL")
+firstrotyear    First calender year of rotation
+restrictpfts    Whether to only allow pft:s specified in stand type
+firstmanageyear First calender year of management
+management1     (no help available)
+planting_system Planting system of management 1
+harvest_system  Harvest system of management 1
+pft             PFT name
+selection       String of pft names
+rottime         Rotation time (years)
+hydrology       Hydrology of crop 1 ("RAINFED" or "IRRIGATED")
+sdate           Sowing date of crop 1
+hdate           Harvest date of crop 1
+nfert           Fertilization application of crop 1
+fallow          Fallow in place of crop 1
+multicrop       Whether to grow several crops in a year in management 1
+management2     (no help available)
+management3     (no help available)
+mt              Header for block defining Management
+
+Keywords defined within block "mt":
+
+mtinclude       Include ManagementType in analysis
+planting_system Planting system
+harvest_system  Harvest system
+pft             PFT name
+selection       String of pft names
+rottime         Rotation time (years)
+hydrology       Hydrology of crop ("RAINFED" or "IRRIGATED")
+sdate           Sowing date of crop
+hdate           Harvest date of crop
+nfert           Fertilization application of crop
+fallow          Fallow in place of crop
+multicrop       Whether to grow several crops in a year
