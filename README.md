@@ -13,11 +13,11 @@ Github repository for getting started with LPJ-GUESS on UC Merced HPC clusters, 
 ## Building LPJ-GUESS
 
 1. Clone the repository by typing `git clone https://github.com/philipmyint/LPJ-GUESS.git`. As of the current date, this will create this README file, plus the following three directories:
-	- `src_LPJ_GUESS`: the source code
-	- `simulations_LPJ_GUESS`: directory where simulations will be run. There are currently two subdirectories, `test` and `Sierra_Nevada`. The former runs a job on just 1 node 	      (though it uses 40 cores on that node) and the latter runs a job on 4 nodes (again with 40 cores per node) for a total of 160 cores.
-	- `data_LPJ_GUESS`: contains input files and other types of data 
-2. Go to `src_LPJ_GUESS` and modify the `set(CONDA_PATH "/home/pmyint/anaconda3")` line in CMakeLists.txt to the path of your Anaconda directory.
-3. While in`src_LPJ_GUESS`, create a build directory and enter it. This is the directory where the executable will be located.
+	- `src`: the source code
+	- `simulations`: directory where simulations will be run. There are currently two subdirectories, `test` and `Sierra_Nevada`. The former runs a job on just 1 node (though it uses 40 cores on that node) and the latter runs a job on 4 nodes (again with 40 cores per node) for a total of 160 cores.
+	- `data`: contains input files and other types of data 
+2. Go to `src` and modify the `set(CONDA_PATH "/home/pmyint/anaconda3")` line in CMakeLists.txt to the path of your Anaconda directory.
+3. While in`src`, create a build directory and enter it. This is the directory where the executable will be located.
 	- `$ mkdir build`
 	- `$ cd build`
 4. From the build directory, type `cmake ..`
@@ -26,10 +26,10 @@ Github repository for getting started with LPJ-GUESS on UC Merced HPC clusters, 
 	- If CMake runs into an issue, it will tell you what went wrong. Fix it, then try again.
 5. Still within the build directory, run `make -j 20`, which will run make in parallel using 20 threads (can also use any number other than 20).
 6. If the build was successful, an executable `guess` should appear in the `build` directory. It should also report successful pass of all unit tests. As of the current date, there are 156 unit tests.
-7. Look in the `reference` directory in `src_LPJ_GUESS` for additional documentation.
+7. Look in the `reference` directory of `src` for additional documentation.
 
 ## Running LPJ-GUESS
 
-Go to wherever your simulation directories are located (e.g., `simulations_LPJ_GUESS/test` or `simulations_LPJ_GUESS/Sierra_Nevada`), modify `submit.sh` and other files as necessary, and submit the job by typing `sbatch submit.sh`. The examples are set up assuming that all the `.ins` input files (e.g., `Sierra_Nevada.ins`, `europe.ins`, `landcover.ins`), as well as the gridlist input file (e.g., `gridlist_sn.txt`) are located in the same directory where the job will be run.
+Go to wherever your simulation directories are located (e.g., `simulations/test` or `simulations/Sierra_Nevada`), modify `submit.sh` and other files as necessary, and submit the job by typing `sbatch submit.sh`. The examples are set up assuming that all the `.ins` input files (e.g., `Sierra_Nevada.ins`, `europe.ins`, `landcover.ins`), as well as the gridlist input file (e.g., `gridlist_sn.txt`) are located in the same directory where the job will be run.
 1. The `submit.sh` script will partition the set of gridlist coordinates into a set of `TOTAL_TASKS` coordinates (where `TOTAL_TASKS` = 40 for the `test` example and = 160 for the `Sierra_Nevada` example). Each of these smaller gridlist files will be put into a separate `run` subdirectory that is labeled with the corresponding task (MPI process) number.
-2. The last part of `submit.sh` collects the different `run` subdirectory outputs and merges each output into a single file that it places into another directory called `all_outputs`. For convenience, the example directories also include a `combine_all_outputs.sh` script that performs just this last collection/merge step. There is also a `make_clean.sh` script that removes all the `run` subdirectories, as well as the output log file, and keeps only the `all_outputs` subdirectory.
+2. The last part of `submit.sh` collects the different `run` subdirectory outputs and merges each output into a single file that it places into another subdirectory called `all_outputs`. For convenience, the example directories also include a `combine_all_outputs.sh` script that performs just this last collection/merge step. There is also a `make_clean.sh` script that removes all the `run` subdirectories, as well as the output log file, and keeps only the `all_outputs` subdirectory.
