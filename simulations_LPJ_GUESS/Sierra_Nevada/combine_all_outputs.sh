@@ -1,5 +1,5 @@
 #!/bin/bash
-TOTAL_TASKS=40
+TOTAL_TASKS=160
 
 #set -e
 
