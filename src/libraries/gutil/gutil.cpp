@@ -27,7 +27,7 @@ void fail() {
 	exit(99);
 }
 
-const unsigned long XEGMENT=32;
+const unsigned long XEGMENT=256;
 
 void xtring::init() {
 
