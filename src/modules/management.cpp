@@ -61,10 +61,6 @@ void harvest_wood(Harvest_CN& i, Pft& pft, bool alive, double frac_cut, double h
 	/// Fraction of leaves adhering to twigs at the time of removal
 	double adhering_leaf_frac = 0.75;
 	
-// added by weichao
-	double fuel_remaining_fc = 1.2;// remaning dead fraction
-
-
 // end   
 
 	// only harvest trees
