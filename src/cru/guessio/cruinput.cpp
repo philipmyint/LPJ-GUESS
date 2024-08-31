@@ -165,6 +165,50 @@ void CRUInput::init() {
 
 	tprogress.settimer();
 	tmute.settimer(MUTESEC);
+
+	/// Monthly temperature for current grid cell and historical period
+        hist_mtemp = new double*[nyears_sim];
+
+        /// Monthly min temperature for current grid cell and historical period
+        hist_mtmin = new double*[nyears_sim];
+
+        /// Monthly max temperature for current grid cell and historical period
+        hist_mtmax = new double*[nyears_sim];
+
+        /// Monthly precipitation for current grid cell and historical period
+        hist_mprec = new double*[nyears_sim];
+
+        /// Monthly sunshine for current grid cell and historical period
+        hist_msun = new double*[nyears_sim];
+
+        /// Monthly wind speed for current grid cell and historical period
+        hist_mwind = new double*[nyears_sim];
+
+        /// Monthly lightning for current grid cell and historical period
+        hist_mlght = new double*[nyears_sim];
+
+        /// Monthly frost days for current grid cell and historical period
+        hist_mfrs = new double*[nyears_sim];
+
+        /// Monthly precipitation days for current grid cell and historical period
+        hist_mwet = new double*[nyears_sim];
+
+        /// Monthly DTR (diurnal temperature range) for current grid cell and historical period
+        hist_mdtr = new double*[nyears_sim];
+
+        for (int i = 0; i < nyears_sim; i++)
+        {
+                hist_mtemp[i] = new double[12];
+                hist_mtmin[i] = new double[12];
+                hist_mtmax[i] = new double[12];
+                hist_mprec[i] = new double[12];
+                hist_msun[i] = new double[12];
+                hist_mwind[i] = new double[12];
+                hist_mlght[i] = new double[12];
+                hist_mfrs[i] = new double[12];
+                hist_mwet[i] = new double[12];
+                hist_mdtr[i] = new double[12];
+        }
 }
 
 
@@ -194,7 +238,7 @@ bool CRUInput::searchmydata(double longitude,double latitude) {
 			//dprintf("WARNING: No data available for dtr in sample data set!\nNo daytime temperature correction for BVOC calculations applied.");
 		//}
 	//}
-	for (j = 0; j < NYEAR_HIST; j++) {
+	for (j = 0; j < nyears_sim; j++) {
 		for (i = 0; i < 12; i++) {
 			hist_mwet[j][i] = mwet[i];
 			//hist_mdtr[j][i] = mdtr[i];
@@ -213,7 +257,7 @@ bool CRUInput::searchmydata(double longitude,double latitude) {
 
 	if (!in) fail("readenv: could not open %s for input", (char*)file_temp);
 	found = false;
-	for (j = 0; j < NYEAR_HIST;) {
+	for (j = 0; j < nyears_sim;) {
 		readfor(in, "f6.2,f5.2,f5.0,12f4.1", &dlon, &dlat, &elev, mtemp);
 		//dprintf("Temperature %g\n", mtemp[0]);
 
@@ -242,7 +286,7 @@ bool CRUInput::searchmydata(double longitude,double latitude) {
 
 	if (!in) fail("readenv: could not open %s for input", (char*)file_dtr);
 	found = false;
-	for (j = 0; j < NYEAR_HIST;) {
+	for (j = 0; j < nyears_sim;) {
 		readfor(in, "f6.2,f5.2,f5.0,12f4.1", &dlon, &dlat, &elev, mdtr);
 		//dprintf("(%g,%g,%g,%g)\n", dlon, dlat, elev, mdtr[0]);
 
@@ -280,7 +324,7 @@ bool CRUInput::searchmydata(double longitude,double latitude) {
 
 	if (!in) fail("readenv: could not open %s for input", (char*)file_prec);
 	found = false;
-	for (j = 0; j < NYEAR_HIST;) {
+	for (j = 0; j < nyears_sim;) {
 		readfor(in, "f6.2,f5.2,f5.0,12f4", &dlon, &dlat, &elev, mprec);
 
 		if (equal(longitude, dlon) && equal(latitude, dlat)) {
@@ -307,7 +351,7 @@ bool CRUInput::searchmydata(double longitude,double latitude) {
 
 	if (!in) fail("readenv: could not open %s for input", (char*)file_sun);
 	found = false;
-	for (j = 0; j < NYEAR_HIST;) {
+	for (j = 0; j < nyears_sim;) {
 		readfor(in, "f6.2,f5.2,f5.0,12f4", &dlon, &dlat, &elev, msun); //I think it can turn to another line
 		//dprintf("sun %g\n", msun[0]);
 		if (equal(longitude, dlon) && equal(latitude, dlat)) {
@@ -334,7 +378,7 @@ bool CRUInput::searchmydata(double longitude,double latitude) {
 
 	if (!in) fail("readenv: could not open %s for input", (char*)file_wind);
 	found = false;
-	for (j = 0; j < NYEAR_HIST;) {
+	for (j = 0; j < nyears_sim;) {
 		readfor(in, "f6.2,f5.2,f5.0,12f4.1", &dlon, &dlat, &elev, mwind);
 
 		if (equal(longitude, dlon) && equal(latitude, dlat)) {
@@ -361,7 +405,7 @@ bool CRUInput::searchmydata(double longitude,double latitude) {
 
 	if (!in) fail("readenv: could not open %s for input", (char*)file_lght);
 	found = false;
-	for (j = 0; j < NYEAR_HIST;) {
+	for (j = 0; j < nyears_sim;) {
 		readfor(in, "f6.2,f5.2,f5.0,12f4", &dlon, &dlat, &elev, mlght);
 
 		if (equal(longitude, dlon) && equal(latitude, dlat)) {
@@ -402,13 +446,13 @@ void CRUInput::get_monthly_ndep(int calendar_year,
 
 // void CRUInput::adjust_raw_forcing_data(double lon,
                                        // double lat,
-                                       // double hist_mtemp[NYEAR_HIST][12],
-									   // double hist_mtmin[NYEAR_HIST][12], // modified by weichao
-									   // double hist_mtmax[NYEAR_HIST][12], // modified by weichao
-                                       // double hist_mprec[NYEAR_HIST][12],
-                                       // double hist_msun[NYEAR_HIST][12],
-									   // double hist_mwind[NYEAR_HIST][12],
-									   // double hist_mlght[NYEAR_HIST][12]) {
+                                       // double hist_mtemp[nyears_sim][12],
+									   // double hist_mtmin[nyears_sim][12], // modified by weichao
+									   // double hist_mtmax[nyears_sim][12], // modified by weichao
+                                       // double hist_mprec[nyears_sim][12],
+                                       // double hist_msun[nyears_sim][12],
+									   // double hist_mwind[nyears_sim][12],
+									   // double hist_mlght[nyears_sim][12]) {
 
 	// // The default (base class) implementation does nothing here.
 // }
@@ -708,7 +752,7 @@ bool CRUInput::getclimate(Gridcell& gridcell) {
 			spinup_mdtr.nextyear();
 
 		}
-		else if (date.year < nyear_spinup + NYEAR_HIST) {
+		else if (date.year < nyear_spinup + nyears_sim) {
 
 			// Historical period
 
@@ -785,8 +829,8 @@ bool CRUInput::getclimate(Gridcell& gridcell) {
 		// Progress report to user and update timer
 
 		if (tmute.getprogress()>=1.0) {
-			progress=(double)(gridlist.getobj().id*(nyear_spinup+NYEAR_HIST)
-				+date.year)/(double)(gridlist.nobj*(nyear_spinup+NYEAR_HIST));
+			progress=(double)(gridlist.getobj().id*(nyear_spinup+nyears_sim)
+				+date.year)/(double)(gridlist.nobj*(nyear_spinup+nyears_sim));
 			tprogress.setprogress(progress);
 			dprintf("%3d%% complete, %s elapsed, %s remaining\n",(int)(progress*100.0),
 				tprogress.elapsed.str,tprogress.remaining.str);
@@ -801,7 +845,29 @@ bool CRUInput::getclimate(Gridcell& gridcell) {
 CRUInput::~CRUInput() {
 
 	// Performs memory deallocation, closing of files or other "cleanup" functions.
-
+	for (int i = 0; i < nyears_sim; i++)
+        {
+                delete [] hist_mtemp[i];
+                delete [] hist_mtmin[i];
+                delete [] hist_mtmax[i];
+                delete [] hist_mprec[i];
+                delete [] hist_msun[i];
+                delete [] hist_mwind[i];
+                delete [] hist_mlght[i];
+                delete [] hist_mfrs[i];
+                delete [] hist_mwet[i];
+                delete [] hist_mdtr[i];
+        }	
+	delete [] hist_mtemp;
+        delete [] hist_mtmin;
+        delete [] hist_mtmax;
+        delete [] hist_mprec;
+        delete [] hist_msun;
+        delete [] hist_mwind;
+        delete [] hist_mlght;
+        delete [] hist_mfrs;
+        delete [] hist_mwet;
+        delete [] hist_mdtr;
 }
 
 

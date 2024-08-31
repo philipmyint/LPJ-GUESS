@@ -78,6 +78,17 @@ public:
 		}
 	}
 
+	void get_data_from(double** source) {
+
+                int y,m;
+                thisyear=0;
+                for (y=0;y<nyear;y++) {
+                        for (m=0;m<12;m++) {
+                                data[y*12+m]=source[y][m];
+                        }
+                }
+        }
+
 	// guess2008 - NEW METHODS 
 
 	void reset_clim() {

@@ -96,28 +96,6 @@ protected:
 	                      double* mndrydep,
 	                      double* mnwetdep);
 
-	/// Gives sub-classes a chance to modify the forcing data
-	/** This function will be called just after the forcing data for the historical
-	 *  period has been read in for a gridcell. Sub-classes can override this function
-	 *  and modify the data if needed, for instance adjusting according to site data.
-	 *
-	 *  Note that modifying this data will also affect the spinup period since
-	 *  the spinup forcing is based on the historical period.
-	 *
-	 *  \param hist_mtemp  Monthly temperature values for each year
-	 *  \param hist_mprec  Monthly precipitation values for each year
-	 *  \param hist_msun   Monthly sunshine values for each year
-	 */
-	// virtual void adjust_raw_forcing_data(double lon,
-	                                     // double lat,
-	                                     // double hist_mtemp[NYEAR_HIST][12],
-										 // double hist_mtmin[NYEAR_HIST][12], // modified by weichao
-										 // double hist_mtmax[NYEAR_HIST][12], // modified by weichao
-	                                     // double hist_mprec[NYEAR_HIST][12],
-	                                     // double hist_msun[NYEAR_HIST][12],
-										 // double hist_mwind[NYEAR_HIST][12],
-										 // double hist_mlght[NYEAR_HIST][12]); // modified by weichao
-
 private:
 
 	/// Type for storing grid cell longitude, latitude and description text
@@ -159,34 +137,34 @@ private:
 	GlobalCO2File co2;
 
 	/// Monthly temperature for current grid cell and historical period
-	double hist_mtemp[NYEAR_HIST][12];
+	double** hist_mtemp;
 
 	/// Monthly min temperature for current grid cell and historical period
-	double hist_mtmin[NYEAR_HIST][12];
+	double** hist_mtmin;
 	
 	/// Monthly max temperature for current grid cell and historical period
-	double hist_mtmax[NYEAR_HIST][12];
+	double** hist_mtmax;
 	
 	/// Monthly precipitation for current grid cell and historical period
-	double hist_mprec[NYEAR_HIST][12];
+	double** hist_mprec;
 
 	/// Monthly sunshine for current grid cell and historical period
-	double hist_msun[NYEAR_HIST][12];
+	double** hist_msun;
 	
 	/// Monthly wind speed for current grid cell and historical period
-	double hist_mwind[NYEAR_HIST][12];
+	double** hist_mwind;
 	
 	/// Monthly lightning for current grid cell and historical period
-	double hist_mlght[NYEAR_HIST][12];
+	double** hist_mlght;
 
 	/// Monthly frost days for current grid cell and historical period
-	double hist_mfrs[NYEAR_HIST][12];
+	double** hist_mfrs;
 
 	/// Monthly precipitation days for current grid cell and historical period
-	double hist_mwet[NYEAR_HIST][12];
+	double** hist_mwet;
 
 	/// Monthly DTR (diurnal temperature range) for current grid cell and historical period
-	double hist_mdtr[NYEAR_HIST][12];
+	double** hist_mdtr;
 
 	/// Weichao revision
 	int elevation;
