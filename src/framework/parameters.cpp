@@ -44,17 +44,19 @@ double distinterval;
 bool ifcdebt;
 //@KE new input option for LMFire 12/2018
 double firepatch;	// fire parch area (m2) for LMFire firemode
-// added by weichao
-int first_cutyear;            // first year of forest management
-double diam_min;                    // minimum value for thinning at diameter scale for trees
-double diam_max;                    // maximum value for thinning at diameter scale for trees
-int cut_int;                    // cutting intervals. we set to 5, 10, 15, 20
-bool thinning_only_once;          // whether to do forest thinning just once at first cutting year (1) or not (0)
-double shrub_remaining_frac;      // thinning remaining fraction for shrub biomass(0.0-1.0)
-bool take_stem_out_of_ecosystem;   // Whether to take the stems out of ecosystem after forest management (1) or not (0). Branches, leaves, and roots will stay in the ecosystem
-bool take_all_out_of_ecosystem;   // Wwhether to take the twigs, leaves out of ecosystem after forest management (1) or not (0) based on "take the stems out of ecosystem (1)". Roots will stay in the ecosystem
-bool prescribed_fire;             // Whether to do prescribed fire(1) or not (0)
-double dead_fuel_remaining;        // Dead fuel remaining fraction after prescribed fire
+// added by weichao and philip
+int nyears_sim;                 	// number of years to carry out the simulation
+int first_sim_year;              	// first year when we want simulation to start 
+int first_cutyear;           		// first year of forest management
+double diam_min;                    	// minimum value for thinning at diameter scale for trees
+double diam_max;                    	// maximum value for thinning at diameter scale for trees
+int cut_int;                    	// cutting intervals. we set to 5, 10, 15, 20
+bool thinning_only_once;          	// whether to do forest thinning just once at first cutting year (1) or not (0)
+double shrub_remaining_frac;      	// thinning remaining fraction for shrub biomass(0.0-1.0)
+bool take_stem_out_of_ecosystem;   	// Whether to take the stems out of ecosystem after forest management (1) or not (0). Branches, leaves, and roots will stay in the ecosystem
+bool take_all_out_of_ecosystem;   	// Wwhether to take the twigs, leaves out of ecosystem after forest management (1) or not (0) based on "take the stems out of ecosystem (1)". Roots will stay in the ecosystem
+bool prescribed_fire;             	// Whether to do prescribed fire(1) or not (0)
+double dead_fuel_remaining;        	// Dead fuel remaining fraction after prescribed fire
 
 bool ifcentury;
 bool ifnlim;
@@ -445,6 +447,10 @@ void plib_declarations(int id,xtring setname) {
 		declareitem("wateruptake", &strparam, 20, CB_WATERUPTAKE,
 			"Water uptake mode (\"WCONT\", \"ROOTDIST\", \"SMART\", \"SPECIESSPECIFIC\")");
 		// management parameters 
+		declareitem("nyears_sim", &nyears_sim, 1.0, 1.0e8, 1, CB_NONE,
+				"number of years to carry out the simulation"); // added by philip
+		declareitem("first_sim_year", &first_sim_year, 1.0, 1.0e8, 1, CB_NONE,
+				"first year when we want simulation to start"); // added by philip
 		declareitem("first_cutyear", &first_cutyear, 1.0, 1.0e8, 1, CB_NONE,
 				"first year of forest management"); // added by weichao	
 		declareitem("diam_min", &diam_min, 0.0,1000,1, CB_NONE,

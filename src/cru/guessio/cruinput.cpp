@@ -636,10 +636,12 @@ bool CRUInput::getclimate(Gridcell& gridcell) {
 		ndep.get_one_calendar_year(date.year - nyear_spinup + FIRSTHISTYEAR,
 		                           mndrydep, mnwetdep);
 
+		//std::cout << "Date.year = " << date.year << ", " << nyear_spinup << ", " << FIRSTHISTYEAR << "\n";
 		if (date.year < nyear_spinup) {
 
 			// During spinup period
 
+			//std::cout << "Date.year = " << date.year << ", " << state_year << ", " << restart << ", " << NYEAR_SPINUP_DATA << "\n";
 			if(date.year == state_year && restart) {
 
 				int year_offset = state_year % NYEAR_SPINUP_DATA;

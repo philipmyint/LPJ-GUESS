@@ -39,6 +39,7 @@
 #include "config.h"
 #include "driver.h" //linked for randfrac()
 #include "stdio.h"	//to print typedef enum
+#include "cru_ts30.h"
 
 // extern double leaf_littter;
 // extern double root_littter;
@@ -3477,7 +3478,7 @@ pftlist.nextobj();
 	}
 	if(date.year-nyear_spinup >0 && date.day>0){
 	    dprintf("Year = %d Month = %d Day = %d stand.id = %d patch.id = %d patch.managed = %d annual_fire_fuel_flux = %f annual_fire_fuel_flux_confirm = %f annual_fire_veg_flux = %f annual_fire_veg_flux_confirm = %f annual_killed_veg_flux = %f annual_fire_flux = %f annual_fire_flux_confirm = %f\n",
-			(date.year + 1450), date.month, date.day, stand.id, patch.id, patch.managed,patch.annual_fire_fuel_flux, patch.annual_fire_fuel_flux_confirm*1000, patch.annual_fire_veg_flux,  patch.annual_fire_veg_flux_confirm*1000, patch.annual_killed_veg_flux*1000, patch.annual_fire_flux, patch.annual_fire_flux_confirm);
+			(date.year + CRU_TS30::FIRSTHISTYEAR - nyear_spinup), date.month, date.day, stand.id, patch.id, patch.managed,patch.annual_fire_fuel_flux, patch.annual_fire_fuel_flux_confirm*1000, patch.annual_fire_veg_flux,  patch.annual_fire_veg_flux_confirm*1000, patch.annual_killed_veg_flux*1000, patch.annual_fire_flux, patch.annual_fire_flux_confirm);
 			
 	}
 	// if (date.year - nyear_spinup >= 0){

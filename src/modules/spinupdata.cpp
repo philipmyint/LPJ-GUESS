@@ -9,6 +9,7 @@
 #include "config.h"
 #include "spinupdata.h"
 #include "shell.h"
+#include <iostream>
 
 using std::vector;
 
@@ -81,5 +82,7 @@ void GenericSpinupData::detrend_data() {
 }
 
 size_t GenericSpinupData::nbr_years() const {
+	//std::cout << "nbr_years = " << data.size() << "\n";
 	return data.size();
 }
+

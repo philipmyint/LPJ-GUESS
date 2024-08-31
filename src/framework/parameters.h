@@ -252,18 +252,20 @@ extern bool ifbvoc;
 //@KE new input option for LMFire 12/2018
 extern double firepatch; // Fire parch area (m2) for LMFire firemode
 
-// added by weichao
+// added by weichao and philip
 
-extern int first_cutyear;            // first year of forest management
-extern double diam_min;                    // minimum value for thinning at diameter scale for trees
-extern double diam_max;                    // maximum value for thinning at diameter scale for trees
-extern int cut_int;                    // cutting intervals. we set to 5, 10, 15, 20
-extern bool thinning_only_once;          // whether to do forest thinning just once at first cutting year (1) or not (0)
-extern double shrub_remaining_frac;      // thinning remaining fraction for shrub biomass(0.0-1.0)
-extern bool take_stem_out_of_ecosystem;   // Whether to take the stems out of ecosystem after forest management (1) or not (0). Branches, leaves, and roots will stay in the ecosystem
-extern bool take_all_out_of_ecosystem;   // ! Wwhether to take the twigs, leaves out of ecosystem after forest management (1) or not (0) based on "take the stems out of ecosystem (1)". Roots will stay in the ecosystem
-extern bool prescribed_fire;             // Whether to do prescribed fire(1) or not (0)
-extern double dead_fuel_remaining;        // Dead fuel remaining fraction after prescribed fire
+extern int nyears_sim;            	// number of years to carry out the simulation
+extern int first_sim_year;            	// first year when we want simulation to start
+extern int first_cutyear;            	// first year of forest management
+extern double diam_min;                 // minimum value for thinning at diameter scale for trees
+extern double diam_max;                 // maximum value for thinning at diameter scale for trees
+extern int cut_int;                     // cutting intervals. we set to 5, 10, 15, 20
+extern bool thinning_only_once;         // whether to do forest thinning just once at first cutting year (1) or not (0)
+extern double shrub_remaining_frac;     // thinning remaining fraction for shrub biomass(0.0-1.0)
+extern bool take_stem_out_of_ecosystem; // Whether to take the stems out of ecosystem after forest management (1) or not (0). Branches, leaves, and roots will stay in the ecosystem
+extern bool take_all_out_of_ecosystem;  // ! Wwhether to take the twigs, leaves out of ecosystem after forest management (1) or not (0) based on "take the stems out of ecosystem (1)". Roots will stay in the ecosystem
+extern bool prescribed_fire;            // Whether to do prescribed fire(1) or not (0)
+extern double dead_fuel_remaining;      // Dead fuel remaining fraction after prescribed fire
 ///////////////////////////////////////////////////////////////////////////////////////
 // The Paramlist class (and Paramtype)
 //

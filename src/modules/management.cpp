@@ -7,6 +7,7 @@
 
 #include "landcover.h"
 #include "management.h"
+#include "cru_ts30.h"
 
 /// Harvest function used for managed forest and for clearing natural vegetation at land use change
 /** A fraction of trees is cut down (frac_cut)
@@ -367,7 +368,7 @@ double cut_fraction(Patch& patch) {
 		return 0.0;
 
 	int First_cutyear;
-    First_cutyear = nyear_spinup+first_cutyear-1950; // Simulation year when forestry harvesting starts; default is directly after spinup.
+    First_cutyear = nyear_spinup+first_cutyear-CRU_TS30::FIRSTHISTYEAR; // Simulation year when forestry harvesting starts; default is directly after spinup.
 	if(stlist[stand.stid].firstmanageyear < 100000)	// Initialised to 100000; other values set in instruction file.
 		First_cutyear = stlist[stand.stid].firstmanageyear - date.first_calendar_year;
 
@@ -421,7 +422,7 @@ void harvest_forest(Individual& indiv, Pft& pft, bool alive, double anpp, bool& 
 
 	int age_class = 0;
 	double man_strength = patch.man_strength;
-	int First_cutyear = nyear_spinup+first_cutyear-1950; // Simulation year when forestry harvesting starts; default is directly after spinup.
+	int First_cutyear = nyear_spinup+first_cutyear-CRU_TS30::FIRSTHISTYEAR; // Simulation year when forestry harvesting starts; default is directly after spinup.
 	if (pft.lifeform==TREE && man_strength > 0.00) {
 
 		double diam = pow(indiv.height / indiv.pft.k_allom2, 1.0 / indiv.pft.k_allom3);
