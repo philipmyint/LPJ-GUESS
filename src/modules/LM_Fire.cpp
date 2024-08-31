@@ -1319,7 +1319,7 @@ void lmfire(Patch &patch, Stand &stand, Gridcell &gridcell, Pftlist &pftlist)
 	// revised by weichao---------------------------------------------------------------------------------------------
 	//! this is for King Fire in 2014
 	// int human_ignition_year;
-	// human_ignition_year = 2014 - CRU_TS30::FIRSTHISTYEAR;
+	// human_ignition_year = 2014 - first_sim_year;
 	// if(date.year-nyear_spinup == human_ignition_year && date.month >= 0){
 		// nlig = 1;
 	// }
@@ -3478,7 +3478,7 @@ pftlist.nextobj();
 	}
 	if(date.year-nyear_spinup >0 && date.day>0){
 	    dprintf("Year = %d Month = %d Day = %d stand.id = %d patch.id = %d patch.managed = %d annual_fire_fuel_flux = %f annual_fire_fuel_flux_confirm = %f annual_fire_veg_flux = %f annual_fire_veg_flux_confirm = %f annual_killed_veg_flux = %f annual_fire_flux = %f annual_fire_flux_confirm = %f\n",
-			(date.year + CRU_TS30::FIRSTHISTYEAR - nyear_spinup), date.month, date.day, stand.id, patch.id, patch.managed,patch.annual_fire_fuel_flux, patch.annual_fire_fuel_flux_confirm*1000, patch.annual_fire_veg_flux,  patch.annual_fire_veg_flux_confirm*1000, patch.annual_killed_veg_flux*1000, patch.annual_fire_flux, patch.annual_fire_flux_confirm);
+			(date.year + first_sim_year - nyear_spinup), date.month, date.day, stand.id, patch.id, patch.managed,patch.annual_fire_fuel_flux, patch.annual_fire_fuel_flux_confirm*1000, patch.annual_fire_veg_flux,  patch.annual_fire_veg_flux_confirm*1000, patch.annual_killed_veg_flux*1000, patch.annual_fire_flux, patch.annual_fire_flux_confirm);
 			
 	}
 	// if (date.year - nyear_spinup >= 0){

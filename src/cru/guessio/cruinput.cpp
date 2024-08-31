@@ -158,7 +158,7 @@ void CRUInput::init() {
 	// Open management files
 	management_input.init();
 
-	date.set_first_calendar_year(FIRSTHISTYEAR - nyear_spinup);
+	date.set_first_calendar_year(first_sim_year - nyear_spinup);
 	// Set timers
 	tprogress.init();
 	tmute.init();
@@ -633,10 +633,10 @@ bool CRUInput::getclimate(Gridcell& gridcell) {
 		// Extract N deposition to use for this year,
 		// monthly means to be distributed into daily values further down
 		double mndrydep[12], mnwetdep[12];
-		ndep.get_one_calendar_year(date.year - nyear_spinup + FIRSTHISTYEAR,
+		ndep.get_one_calendar_year(date.year - nyear_spinup + first_sim_year,
 		                           mndrydep, mnwetdep);
 
-		//std::cout << "Date.year = " << date.year << ", " << nyear_spinup << ", " << FIRSTHISTYEAR << "\n";
+		//std::cout << "Date.year = " << date.year << ", " << nyear_spinup << ", " << first_sim_year << "\n";
 		if (date.year < nyear_spinup) {
 
 			// During spinup period
@@ -754,7 +754,7 @@ bool CRUInput::getclimate(Gridcell& gridcell) {
 
 	// Send environmental values for today to framework
 
-	climate.co2 = co2[FIRSTHISTYEAR + date.year - nyear_spinup];
+	climate.co2 = co2[first_sim_year + date.year - nyear_spinup];
 
 	climate.temp  = dtemp[date.day];
 	
