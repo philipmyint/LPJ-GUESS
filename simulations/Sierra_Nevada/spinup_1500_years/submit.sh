@@ -1,10 +1,10 @@
 #!/bin/bash  
-#SBATCH --job-name=LPJ_GUESS  #the job name
+#SBATCH --job-name=LPJ-GUESS  #the job name
 #SBATCH --nodes=4  #number of requested nodes
 #SBATCH --ntasks-per-node=24  #tasks/cores on each node
 #SBATCH --partition short #choices include test, short, medium, long, bigmem (see https://ucm-it.github.io/hpc_docs/)
 #SBATCH --mem=96G  #total memory requested, use 0 if you want to use entire node memory
-#SBATCH --time=0-1:00:00 # hh:mm::ss
+#SBATCH --time=0-2:00:00 # hh:mm::ss
 #SBATCH --output=output_%j.log  #the output file containing information from the standard output
 #SBATCH --export=ALL
 # #SBATCH -M merced # add this flag if you want to submit jobs to MERCED cluster
@@ -18,7 +18,7 @@ INSFILE=main.ins
 INPUT_MODULE=cru_ncep
 GRIDLIST=gridlist_Sierra_Nevada.txt
 OUTFILES='*.out'
-EXEC=/home/pmyint/data/LPJ_GUESS/src/build/guess
+EXEC=/home/pmyint/data/LPJ-GUESS/src/build/guess
 
 
 # Nothing to change past here

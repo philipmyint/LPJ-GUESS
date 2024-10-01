@@ -1,5 +1,5 @@
 #!/bin/bash  
-#SBATCH --job-name=LPJ_GUESS  #the job name
+#SBATCH --job-name=LPJ-GUESS  #the job name
 #SBATCH --nodes=1  #number of requested nodes
 #SBATCH --ntasks-per-node=40  #tasks/cores on each node
 #SBATCH --partition test #choices include test, short, medium, long, bigmem (see https://ucm-it.github.io/hpc_docs/)
@@ -18,7 +18,7 @@ INSFILE=main.ins
 INPUT_MODULE=cru_ncep
 GRIDLIST=gridlist_American_River.txt
 OUTFILES='*.out'
-EXEC=/home/pmyint/data/LPJ_GUESS/src/build/guess
+EXEC=/home/pmyint/data/LPJ-GUESS/src/build/guess
 
 
 # Nothing to change past here

@@ -87,7 +87,7 @@ title 'LPJ-GUESS cohort mode - Sierra Nevada species'
 vegmode "cohort"      ! "cohort", "individual" or "population"
 firemode "LMFIRE_CF"	! whether to use LPJ fire routine "LPJFIRE", LMFire routine "LMFIRE", LMFire_CF routine "LMFIRE_CF", 
 					! or "NOFIRE" to turn fire off (added by weichao)
-nyear_spinup 1500      ! number of years to spin up the simulation for
+nyear_spinup 2000      ! number of years to spin up the simulation for
 ifcalcsla 1           ! whether to calculate SLA from leaf longevity
                       ! (PFT-specific value can be specified in this file instead)
 ifcalccton 1          ! whether to calculate leaf C:N min from leaf longevity
@@ -131,7 +131,7 @@ nrelocfrac 0.5			! fraction of N retranslocated prior to leaf and root shedding
 !state_year 500			! year to save/start state file (no setting = after spinup)
 restart 0				! wheter to start from a state file
 save_state 1			! wheter to save a state file
-state_path "/home/pmyint/data/LPJ-GUESS/simulations/Sierra_Nevada/spinup_1500_years/state"             ! directory to put state files in
+state_path "/home/pmyint/data/LPJ-GUESS/simulations/Sierra_Nevada/spinup_2000_years/state"             ! directory to put state files in
 
 
 ifsmoothgreffmort 1				! whether to vary mort_greff smoothly with growth efficiency (1) 

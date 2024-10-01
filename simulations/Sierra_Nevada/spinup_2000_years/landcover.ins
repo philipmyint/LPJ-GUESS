@@ -1,0 +1,235 @@
+!///////////////////////////////////////////////////////////////////////////////////////
+!// LPJ-GUESS INSTRUCTION SCRIPT FOR COHORT/INDIVIDUAL MODE
+!// Global PFTs
+!//
+!// LPJ-GUESS 3.0
+!// 
+!///////////////////////////////////////////////////////////////////////////////////////
+! Input files
+!
+
+param "file_lu"      (str "")
+param "file_lucrop"  (str "")
+param "file_lupasture"  (str "")
+param "file_lunatural"  (str "")
+param "file_luforest"  (str "")
+
+param "file_Nfert_st"  (str "")
+
+
+!///////////////////////////////////////////////////////////////////////////////////////
+! Output files
+!
+
+! Prefined yearly output
+! These files may be outcommented if their output is not required. 
+
+!file_cmass_cropland "cmass_cropland.out"
+!file_cmass_pasture "cmass_pasture.out"
+file_cmass_natural "cmass_natural.out"
+file_clitter_ag_forest "clitter_ag_forest.out"                     !added by weichao
+file_clitter_ag_natural "clitter_ag_natural.out"                   !added by weichao
+file_cmass_forest "cmass_forest.out"
+!file_anpp_cropland "anpp_cropland.out"
+!file_anpp_pasture "anpp_pasture.out"
+file_anpp_natural "anpp_natural.out"
+file_anpp_forest "anpp_forest.out"
+file_agpp_natural "agpp_natural.out"                               !added by weichao
+file_agpp_forest "agpp_forest.out"                                 !added by weichao
+file_aaet_natural "aaet_natural.out"                               !added by weichao
+file_aaet_forest "aaet_forest.out"                                 !added by weichao
+file_lai_natural "lai_natural.out"                                 !added by weichao
+file_lai_forest "lai_forest.out"                                   !added by weichao
+
+file_ROS_natural "ROS_natural.out"                                 !added by weichao
+file_ROS_forest "ROS_forest.out"                                   !added by weichao
+file_scorchHeight_natural "scorchHeight_natural.out"                                 !added by weichao
+file_scorchHeight_forest "scorchHeight_forest.out"                                   !added by weichao
+
+file_P_m_natural "P_m_natural.out"                                 !added by weichao
+file_P_m_forest "P_m_forest.out"                                   !added by weichao
+file_P_mCK_natural "P_mCK_natural.out"                             !added by weichao
+file_P_mCK_forest "P_mCK_forest.out"                               !added by weichao
+file_P_mtau_natural "P_mtau_natural.out"                           !added by weichao
+file_P_mtau_forest "P_mtau_forest.out"                             !added by weichao
+
+file_diameter_natural "diameter_natural.out"                       !added by weichao
+file_diameter_forest "diameter_forest.out"                         !added by weichao
+file_barkt_natural "barkt_natural.out"                             !added by weichao
+file_barkt_forest "barkt_forest.out"                               !added by weichao
+file_crownlength_natural "crownlength_natural.out"                 !added by weichao
+file_crownlength_forest "crownlength_forest.out"                   !added by weichao
+
+file_height_natural "height_natural.out"                           !added by weichao
+file_height_forest "height_forest.out"                             !added by weichao
+file_dens_natural "dens_natural.out"
+file_dens_forest "dens_forest.out"
+!file_cflux_cropland "cflux_cropland.out"
+!file_cflux_pasture "cflux_pasture.out"
+file_cflux_natural "cflux_natural.out"
+file_cflux_forest "cflux_forest.out"
+!file_cpool_cropland "cpool_cropland.out"
+!file_cpool_pasture "cpool_pasture.out"
+file_cpool_natural "cpool_natural.out"
+file_cpool_forest "cpool_forest.out"
+!file_nflux_cropland "nflux_cropland.out"
+!file_nflux_pasture "nflux_pasture.out"
+!file_nflux_natural "nflux_natural.out"
+!file_nflux_forest "nflux_forest.out"
+!file_npool_cropland "npool_cropland.out"
+!file_npool_pasture "npool_pasture.out"
+!file_npool_natural "npool_natural.out"
+
+
+!///////////////////////////////////////////////////////////////////////////////////////
+!// RUN PARAMETERS AND OPTIONS 
+!
+!!!!!!!!!!!! forest management parameters !!!!!!!!!!!! added by weichao and philip
+latlon_digits 3                ! number of digits past the decimal point in the latitude/longitude values of the climate forcings
+nyears_sim 43                  ! number of years to carry out the simulation
+first_sim_year 1979             ! first year when we want simulation to start
+first_cutyear 3000            ! first year of forest management 
+diam_min 1000.0                    ! minimum value for thinning at diameter scale for trees
+diam_max 0.0                    ! maximum value for thinning at diameter scale for trees
+cut_int  200                    ! cutting intervals. we set to 5, 10, 15, 20
+thinning_only_once 0          ! whether to do forest thinning just once at first cutting year (1) or not (0)
+shrub_remaining_frac 1.0      ! thinning remaining fraction for shrub biomass(0.0-1.0)
+take_stem_out_of_ecosystem 0  ! Whether to take the stems out of ecosystem after forest management (1) or not (0). Branches, leaves, and roots will stay in the ecosystem
+take_all_out_of_ecosystem 0   ! Wwhether to take the twigs, leaves out of ecosystem after forest management (1) or not (0) based on "take the stems out of ecosystem (1)". Roots will stay in the ecosystem
+prescribed_fire 0             ! Whether to do prescribed fire(1) or not (0)
+dead_fuel_remaining 1.0       ! Dead fuel remaining fraction after prescribed fire (0.0-1.0)
+
+!!!!!!!!!!!! landcover parameters !!!!!!!!!!!!!!
+
+npatch_secondarystand 5		! number of replicate patches to simulate in secondary stands
+reduce_all_stands 0		! Whether to reduce equal percentage of all stands of a stand type at land cover change
+age_limit_reduce 5		! Minimum age of stands to reduce at land cover change
+
+!!!!!!!! add by weichao
+minimizecftlist 0
+ifintercropgrass 0
+ifcalcdynamic_phu 0
+ifdyn_phu_limit 0
+iftillage 0
+nyear_dyn_phu 0
+!!!!!!!! end of revision
+
+run_landcover 1        ! whether to use (and change) landcover fractions (1) or not (0)	
+
+run_urban 0	      ! whether to simulate barren land (1) or not (0)	
+run_crop 0	      ! whether to simulate crop vegetation (1) or not (0)
+run_forest 1	      ! whether to simulate managed forest (1) or not (0)
+run_pasture 0	      ! whether to simulate pasture (1) or not (0)
+run_natural 1	      ! whether to simulate natural vegetation (1) or not (0)
+run_peatland 0	      ! whether to simulate peatland (1) or not (0)
+run_barren 0	      ! whether to simulate barren land (1) or not (0)
+
+ifslowharvestpool 0	! If a slow harvested product pool is included in patchpft.
+printseparatestands 0	! Whether to print multiple stands within a land cover type (except cropland) separately
+gross_land_transfer 0	! Whether to use gross land transfer: simulate gross lcc (1); read landcover transfer matrix input file (2); 
+			! read stand type transfer matrix input file (3), or not (0)
+ifprimary_lc_transfer 0	! Whether to use primary/secondary land transition info in landcover transfer input file (1). or not (0)
+ifprimary_to_secondary_transfer 0 ! Whether to use primary-to-secondary land transition info (within land cover type) in landcover 
+				  ! transfer input file (1). or not (0)
+transfer_level 0	! Pooling level of land cover transitions; 0: one big pool; 1: land cover-level; 2: stand type-level
+iftransfer_to_new_stand 1 ! Whether to create new stands in transfer_to_new_stand() according to the rules in copy_stand_type()
+
+!///////////////////////////////////////////////////////////////////////////////////////
+!// PARAMETERS FOR MANAGEMENT TYPES
+
+group "crop_management" (
+
+	planting_system "monoculture"
+)
+
+!///////////////////////////////////////////////////////////////////////////////////////
+!// PARAMETERS FOR STAND TYPES
+
+
+group "common_stand" (
+
+	intercrop "nointercrop"
+	naturalveg "none"
+	restrictpfts 0		! Use all pft:s defined for a land cover (pft parameter landcover)
+)
+
+group "crop_stand" (
+
+	landcover "cropland"
+	intercrop "naturalgrass" ! Use natural grass pft:s as covercrop
+	restrictpfts 1		! Use only pft:s specified in stand type
+	planting_system "monoculture"
+	hydrology "rainfed"
+)
+
+st "Urban" (
+
+	common_stand
+	stinclude 1
+	landcover "urban"
+)
+
+st "Peatland" (
+
+	common_stand
+	stinclude 1
+	landcover "peatland"
+)
+
+st "Natural" (
+
+	common_stand
+	stinclude 1
+	landcover "natural"
+)
+
+st "Pasture" (
+
+	common_stand
+	stinclude 1
+	landcover "pasture"
+)
+
+st "Forest" (
+
+	common_stand
+	stinclude 1
+	landcover "forest"
+	naturalveg "all"	! Use natural pft:s
+	harvest_system "continuous"
+	!harvest_system == "CLEARCUT"
+)
+
+st "Barren" (
+
+	common_stand
+	stinclude 1
+	landcover "barren"
+)
+
+
+!///////////////////////////////////////////////////////////////////////////////////////
+!// PARAMETERS FOR PFTS
+!// Run GUESS with -help option for list of keywords and their meanings
+
+
+pft "C3G_pas" (
+	C3G
+	landcover "pasture"
+	harv_eff 0.5			! old value; intensive grazing: 90% grazed, 25-60 % returned to soil as faeces (0.36-0.675 removed, 0.5 OK average)
+	res_outtake 0.0			! not used by crop grass
+)
+
+pft "C4G_pas" (
+	C4G
+	landcover "pasture"
+	harv_eff 0.5			! old value; intensive grazing: 90% grazed, 25-60 % returned to soil as faeces (0.36-0.675 removed, 0.5 OK average)
+	res_outtake 0.0			! not used by crop grass
+)
+
+pft "C3G_pea" (
+	C3G
+	landcover "peatland"
+	harv_eff 0
+)
+
