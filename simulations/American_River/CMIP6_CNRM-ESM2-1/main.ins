@@ -1,0 +1,31 @@
+!
+! Instruction file with European species to be used with the 
+! CRU I/O module.
+!
+
+import "europe.ins"
+import "landcover.ins"
+!import "crop.ins"
+!import "crop_c.ins"
+!import "crop_n.ins"
+
+!///////////////////////////////////////////////////////////////////////////////////////
+! Forcing Data & gridlists
+!
+
+! Should change this to the directory where the .ins files are to be copied and where the simulations will be run
+param "running_directory" (str "/home/pmyint/data/LPJ-GUESS/simulations/American_River/CMIP6_CNRM-ESM2-1")
+
+param "file_gridlist" (str "gridlist_American_River.txt")
+param "file_soil" (str "/home/pmyint/data/LPJ-GUESS/inputs/CMIP6_Sierra_Nevada/soil_lpj.grd")
+param "file_soil_depth" (str "/home/pmyint/data/LPJ-GUESS/inputs/CMIP6_Sierra_Nevada/soil_depth.grd")
+param "file_co2"      (str "/home/pmyint/data/LPJ-GUESS/inputs/CMIP6_Sierra_Nevada/co2_rcp85_1950_2100.txt")
+param "file_temp" (str "/home/pmyint/data/LPJ-GUESS/inputs/CMIP6_Sierra_Nevada/tmean_CNRM-ESM2-1_ssp585_final_1950_2100.grd")  ! temperature
+param "file_dtr" (str "/home/pmyint/data/LPJ-GUESS/inputs/CMIP6_Sierra_Nevada/dtr_CNRM-ESM2-1_ssp585_final_1950_2100.grd")  ! diurnal temperature range
+param "file_prec" (str "/home/pmyint/data/LPJ-GUESS/inputs/CMIP6_Sierra_Nevada/pr_CNRM-ESM2-1_ssp585_final_1950_2100.grd")  ! precipitation
+param "file_sun"  (str "/home/pmyint/data/LPJ-GUESS/inputs/CMIP6_Sierra_Nevada/rsds_CNRM-ESM2-1_ssp585_final_1950_2100.grd")  ! sunshine
+param "file_wind"  (str "/home/pmyint/data/LPJ-GUESS/inputs/CMIP6_Sierra_Nevada/wspeed_CNRM-ESM2-1_ssp585_final_1950_2100.grd")  ! wind speed
+param "file_lght"  (str "/home/pmyint/data/LPJ-GUESS/inputs/CMIP6_Sierra_Nevada/lght_sn_HadGEM2-ES365_rcp85_1950_2100.grd")  ! lightning
+
+! N deposition (blank string to use constant pre-industrial level of 2 kgN/ha/year)
+param "file_ndep"     (str "")

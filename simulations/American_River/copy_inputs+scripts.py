@@ -1,7 +1,7 @@
 import os
 
 dirs_to_copy_from = ['CMIP6']
-dirs_to_copy_to = ['CMIP5']
+dirs_to_copy_to = ['CMIP6_CNRM-ESM2-1']
 
 dir_current = os.getcwd()
 
