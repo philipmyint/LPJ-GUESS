@@ -253,7 +253,7 @@ extern bool ifbvoc;
 extern double firepatch; // Fire parch area (m2) for LMFire firemode
 
 // added by weichao and philip
-
+extern int latlon_digits;            	// number of digits past the decimal point in the latitude/longitude values of the climate forcings
 extern int nyears_sim;            	// number of years to carry out the simulation
 extern int first_sim_year;            	// first year when we want simulation to start
 extern int first_cutyear;            	// first year of forest management

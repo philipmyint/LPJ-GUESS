@@ -45,6 +45,7 @@ bool ifcdebt;
 //@KE new input option for LMFire 12/2018
 double firepatch;	// fire parch area (m2) for LMFire firemode
 // added by weichao and philip
+int latlon_digits;               	// number of digits past the decimal point in the latitude/longitude values of the climate forcings 
 int nyears_sim;                 	// number of years to carry out the simulation
 int first_sim_year;              	// first year when we want simulation to start 
 int first_cutyear;           		// first year of forest management
@@ -447,6 +448,8 @@ void plib_declarations(int id,xtring setname) {
 		declareitem("wateruptake", &strparam, 20, CB_WATERUPTAKE,
 			"Water uptake mode (\"WCONT\", \"ROOTDIST\", \"SMART\", \"SPECIESSPECIFIC\")");
 		// management parameters 
+		declareitem("latlon_digits", &latlon_digits, 1.0, 1.0e8, 1, CB_NONE,
+				"number of digits past the decimal point in the latitude/longitude values of the climate forcings"); // added by philip
 		declareitem("nyears_sim", &nyears_sim, 1.0, 1.0e8, 1, CB_NONE,
 				"number of years to carry out the simulation"); // added by philip
 		declareitem("first_sim_year", &first_sim_year, 1.0, 1.0e8, 1, CB_NONE,

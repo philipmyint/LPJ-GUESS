@@ -258,7 +258,10 @@ bool CRUInput::searchmydata(double longitude,double latitude) {
 	if (!in) fail("readenv: could not open %s for input", (char*)file_temp);
 	found = false;
 	for (j = 0; j < nyears_sim;) {
-		readfor(in, "f6.2,f5.2,f5.0,12f4.1", &dlon, &dlat, &elev, mtemp);
+		if (latlon_digits == 3)
+			readfor(in, "f7.3,f6.3,f5.0,12f4.1", &dlon, &dlat, &elev, mtemp);
+		else
+			readfor(in, "f6.2,f5.2,f5.0,12f4.1", &dlon, &dlat, &elev, mtemp);
 		//dprintf("Temperature %g\n", mtemp[0]);
 
 			if (equal(longitude, dlon) && equal(latitude, dlat)) {
@@ -287,7 +290,10 @@ bool CRUInput::searchmydata(double longitude,double latitude) {
 	if (!in) fail("readenv: could not open %s for input", (char*)file_dtr);
 	found = false;
 	for (j = 0; j < nyears_sim;) {
-		readfor(in, "f6.2,f5.2,f5.0,12f4.1", &dlon, &dlat, &elev, mdtr);
+		if (latlon_digits == 3)
+			readfor(in, "f7.3,f6.3,f5.0,12f4.1", &dlon, &dlat, &elev, mdtr);
+		else
+			readfor(in, "f6.2,f5.2,f5.0,12f4.1", &dlon, &dlat, &elev, mdtr);
 		//dprintf("(%g,%g,%g,%g)\n", dlon, dlat, elev, mdtr[0]);
 
 		if (equal(longitude, dlon) && equal(latitude, dlat)) {
@@ -325,7 +331,10 @@ bool CRUInput::searchmydata(double longitude,double latitude) {
 	if (!in) fail("readenv: could not open %s for input", (char*)file_prec);
 	found = false;
 	for (j = 0; j < nyears_sim;) {
-		readfor(in, "f6.2,f5.2,f5.0,12f4", &dlon, &dlat, &elev, mprec);
+		if (latlon_digits == 3)
+			readfor(in, "f7.3,f6.3,f5.0,12f4", &dlon, &dlat, &elev, mprec);
+		else
+			readfor(in, "f6.2,f5.2,f5.0,12f4", &dlon, &dlat, &elev, mprec);
 
 		if (equal(longitude, dlon) && equal(latitude, dlat)) {
 			for (i = 0; i < 12; i++) {
@@ -352,7 +361,10 @@ bool CRUInput::searchmydata(double longitude,double latitude) {
 	if (!in) fail("readenv: could not open %s for input", (char*)file_sun);
 	found = false;
 	for (j = 0; j < nyears_sim;) {
-		readfor(in, "f6.2,f5.2,f5.0,12f4", &dlon, &dlat, &elev, msun); //I think it can turn to another line
+		if (latlon_digits == 3)
+			readfor(in, "f7.3,f6.3,f5.0,12f4", &dlon, &dlat, &elev, msun);
+		else
+			readfor(in, "f6.2,f5.2,f5.0,12f4", &dlon, &dlat, &elev, msun); //I think it can turn to another line
 		//dprintf("sun %g\n", msun[0]);
 		if (equal(longitude, dlon) && equal(latitude, dlat)) {
 			for (i = 0; i < 12; i++) {
@@ -379,7 +391,10 @@ bool CRUInput::searchmydata(double longitude,double latitude) {
 	if (!in) fail("readenv: could not open %s for input", (char*)file_wind);
 	found = false;
 	for (j = 0; j < nyears_sim;) {
-		readfor(in, "f6.2,f5.2,f5.0,12f4.1", &dlon, &dlat, &elev, mwind);
+		if (latlon_digits == 3)
+			readfor(in, "f7.3,f6.3,f5.0,12f4.1", &dlon, &dlat, &elev, mwind);
+		else
+			readfor(in, "f6.2,f5.2,f5.0,12f4.1", &dlon, &dlat, &elev, mwind);
 
 		if (equal(longitude, dlon) && equal(latitude, dlat)) {
 			for (i = 0; i < 12; i++) {
@@ -406,7 +421,10 @@ bool CRUInput::searchmydata(double longitude,double latitude) {
 	if (!in) fail("readenv: could not open %s for input", (char*)file_lght);
 	found = false;
 	for (j = 0; j < nyears_sim;) {
-		readfor(in, "f6.2,f5.2,f5.0,12f4", &dlon, &dlat, &elev, mlght);
+		if (latlon_digits == 3)
+			readfor(in, "f7.3,f6.3,f5.0,12f4", &dlon, &dlat, &elev, mlght);
+		else
+			readfor(in, "f6.2,f5.2,f5.0,12f4", &dlon, &dlat, &elev, mlght);
 
 		if (equal(longitude, dlon) && equal(latitude, dlat)) {
 			for (i = 0; i < 12; i++) {
@@ -503,7 +521,10 @@ bool CRUInput::getgridcell(Gridcell& gridcell) {
 	            if (!in) fail("readenv: could not open %s for input", (char*)file_soil);
 	            found = false;
 	                  for (j = 0; j < 6532;j++) {
-		                   readfor(in, "f7.2,f6.2,f2.1", &dlon, &dlat, &soildata); 
+				   if (latlon_digits == 3)
+		                   	readfor(in, "f8.3,f7.3,f2.1", &dlon, &dlat, &soildata); 
+                                   else
+		                   	readfor(in, "f7.2,f6.2,f2.1", &dlon, &dlat, &soildata); 
 		                  //dprintf("(%g,%g,%g)\n", dlon,dlat,soildata);
 		                   if (equal(lon, dlon) && equal(lat, dlat)) {
                                soilcode = soildata*10;
@@ -536,7 +557,10 @@ bool CRUInput::getgridcell(Gridcell& gridcell) {
 	            if (!in2) fail("readenv: could not open %s for input", (char*)file_soil_depth);
 	            found2 = false;
 	                  for (jj = 0; jj < 6532;jj++) {
-		                   readfor(in2, "f7.2,f6.2,f5.2", &dlon2, &dlat2, &soildepth); 
+				   if (latlon_digits == 3)
+		                   	readfor(in2, "f8.3,f7.3,f5.2", &dlon2, &dlat2, &soildepth); 
+                		   else
+		                   	readfor(in2, "f7.2,f6.2,f5.2", &dlon2, &dlat2, &soildepth); 
 		                   //dprintf("(%g,%g,%g)\n", dlon2,dlat2,soildepth*100);
 		                   if (equal(lon, dlon2) && equal(lat, dlat2)) {
                                soildepth_total = soildepth*1000;
@@ -832,7 +856,7 @@ bool CRUInput::getclimate(Gridcell& gridcell) {
 			progress=(double)(gridlist.getobj().id*(nyear_spinup+nyears_sim)
 				+date.year)/(double)(gridlist.nobj*(nyear_spinup+nyears_sim));
 			tprogress.setprogress(progress);
-			dprintf("%3d%% complete, %s elapsed, %s remaining\n",(int)(progress*100.0),
+			dprintf("Process %d: %3d%% complete, %s elapsed, %s remaining\n",GuessParallel::get_rank()+1,(int)(progress*100.0),
 				tprogress.elapsed.str,tprogress.remaining.str);
 			tmute.settimer(MUTESEC);
 		}
