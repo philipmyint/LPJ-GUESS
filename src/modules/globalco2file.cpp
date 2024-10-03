@@ -10,6 +10,7 @@
 #include "config.h"
 #include "globalco2file.h"
 
+#include <iostream>
 #include "guess.h"
 #include <stdio.h>
 #include <limits>
