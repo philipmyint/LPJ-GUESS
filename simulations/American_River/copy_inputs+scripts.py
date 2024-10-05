@@ -1,7 +1,7 @@
 import os
 
-dirs_to_copy_from = ['CMIP6']
-dirs_to_copy_to = ['CMIP6_CNRM-ESM2-1']
+dirs_to_copy_from = ['CMIP5_HadGEM2-ES365_rcp85_1950_2099']
+dirs_to_copy_to = ['CMIP5_CNRM-CM5_rcp45_1950_2099']
 
 dir_current = os.getcwd()
 
