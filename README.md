@@ -5,14 +5,14 @@ Github repository for getting started with LPJ-GUESS (V4) on UC Merced HPC clust
 
 ## Getting Started
 
-1. Type `module load mpich` on the command line or, better yet, add this line to your .bashrc (or .cshrc, etc.) file. This will load the MPI module needed to run LPJ-GUESS in parallel. Other MPI modules that could be tried are `mvapich` and `openmpi`.
-2. Install Anaconda. As of the creation date, this can be done by going to this website (https://www.anaconda.com/download) and downloading `Anaconda3-2024.06-1-Linux-x86_64.sh` install script. Upload this script to the Merced cluster (or perhaps download it directly through the `wget` command) and execute it. In order to execute it, you may first have to change the script to be recognized as an executable by typing `chmod 770 Anaconda3-2024.06-1-Linux-x86_64.sh`.
+1. Type `module load mpich` on the command line or, better yet, add this line to your .bashrc (or .cshrc, etc.) file. This will load the MPI module needed to run LPJ-GUESS in parallel. If mpich does not work, other MPI modules that could be tried are `mvapich` and `openmpi`.
+2. Install Anaconda. As of the creation date, this can be done by going to this website (https://www.anaconda.com/download) and downloading the `Anaconda3-2024.06-1-Linux-x86_64.sh` install script. Upload this script to the Merced cluster (or perhaps download it directly through the `wget` command) and execute it. In order to execute it, you may first have to change the script to be recognized as an executable by typing `chmod 770 Anaconda3-2024.06-1-Linux-x86_64.sh`.
 3. Go to the Anaconda folder after installation finishes, and install the `netcdf4` package by typing `conda install anaconda::netcdf4` (see https://anaconda.org/anaconda/netcdf4). This package is used by LPJ-GUESS for input/output (I/O) of certain types of environmental/climate data.
 4. Make sure CMake is available by typing `cmake --version` into the command line and ensuring that this query does not return an empty string. As of the creation date, CMake version 3.26.5 is available by default in the Merced clusters, which is sufficient, so no action may be necessary for this step.
 
 ## Building LPJ-GUESS
 
-1. Clone the repository by typing `git clone https://github.com/philipmyint/LPJ-GUESS.git`. As of the creation date, this will create this README file, plus the following three directories:
+1. Clone the repository by typing `git clone https://github.com/philipmyint/LPJ-GUESS.git`. Cloning the repository will create this README file, plus the following three directories:
 	- `src`: the source code
 	- `simulations`: directory where simulations will be run. There are currently two subdirectories, `American_River` and `Sierra_Nevada`. The former involves jobs that are run on just 1 node (though it uses 40 cores on that node) and the latter runs a job on 4 nodes (with 24 cores per node since most of the Merced HPC cluster nodes have that many cores per node) for a total of 96 cores.
 	- `references`: contains papers and other documents describing the LPJ-GUESS code and some of its modules, including the LMfireCF module.
