@@ -9,8 +9,15 @@ dir_outputs = 'outputs'
 os.system('rm -rf ' + dir_outputs)
 os.system('mkdir ' + dir_outputs)
 
-dirs_to_copy_from = ['CMIP6']
-dirs_to_copy_from = [a for a in os.listdir(dir_current) if os.path.isdir(a)] # Uncomment this line if you want to copy output from all directories
+def get_subdirectories(path):
+    subdirs = []
+    for dirpath, dirnames, filenames in os.walk(path):
+        for dirname in dirnames:
+            subdirs.append(os.path.join(dirpath, dirname))
+    return subdirs
+
+#dirs_to_copy_from = ['CMIP6_lightning_test']
+dirs_to_copy_from = get_subdirectories('.') # Uncomment this line if you want to copy output from all directories
 
 for dir_to_copy_from in dirs_to_copy_from:
     

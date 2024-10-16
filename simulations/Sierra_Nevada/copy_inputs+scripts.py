@@ -1,7 +1,7 @@
 import os
 
 dirs_to_copy_from = ['spinup_1500_years']
-dirs_to_copy_to = ['spinup_2000_years']
+dirs_to_copy_to = ['spinup_3000_years', 'spinup_1000_years', 'spinup_500_years']
 
 dir_current = os.getcwd()
 

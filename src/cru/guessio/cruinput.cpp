@@ -525,7 +525,7 @@ bool CRUInput::getgridcell(Gridcell& gridcell) {
 		                   	readfor(in, "f8.3,f7.3,f2.1", &dlon, &dlat, &soildata); 
                                    else
 		                   	readfor(in, "f7.2,f6.2,f2.1", &dlon, &dlat, &soildata); 
-		                  //dprintf("(%g,%g,%g)\n", dlon,dlat,soildata);
+		                   //dprintf("(%g,%g,%g)\n", dlon,dlat,soildata);
 		                   if (equal(lon, dlon) && equal(lat, dlat)) {
                                soilcode = soildata*10;
 			                   dprintf("find soil type (%g,%g,%g) in %s",lon, lat, soilcode);
@@ -561,7 +561,7 @@ bool CRUInput::getgridcell(Gridcell& gridcell) {
 		                   	readfor(in2, "f8.3,f7.3,f5.2", &dlon2, &dlat2, &soildepth); 
                 		   else
 		                   	readfor(in2, "f7.2,f6.2,f5.2", &dlon2, &dlat2, &soildepth); 
-		                   //dprintf("(%g,%g,%g)\n", dlon2,dlat2,soildepth*100);
+		                   //dprintf("(%g,%g,%g)\n", dlon2,dlat2,soildepth);
 		                   if (equal(lon, dlon2) && equal(lat, dlat2)) {
                                soildepth_total = soildepth*1000;
 							   SOILDEPTH_UPPER = soildepth_total/3*5; // used to be 5, change to 4
