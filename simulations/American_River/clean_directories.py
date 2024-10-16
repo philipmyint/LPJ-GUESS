@@ -2,7 +2,7 @@ import os
 
 dir_current = os.getcwd()
 
-delete_log_file = False
+delete_log_file = True
 delete_all_outputs_directory = False
 
 for directory in [a for a in os.listdir(dir_current) if os.path.isdir(a)]:
