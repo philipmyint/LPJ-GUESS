@@ -39,6 +39,7 @@
 #include "config.h"
 #include "driver.h" //linked for randfrac()
 #include "stdio.h"	//to print typedef enum
+#include <iostream>
 #include "cru_ts30.h"
 
 // extern double leaf_littter;

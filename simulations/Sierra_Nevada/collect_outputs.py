@@ -16,7 +16,7 @@ def get_subdirectories(path):
             subdirs.append(os.path.join(dirpath, dirname))
     return subdirs
 
-#dirs_to_copy_from = ['CMIP6_lightning_test']
+#dirs_to_copy_from = ['']
 dirs_to_copy_from = get_subdirectories('.') # Uncomment this line if you want to copy output from all directories
 
 for dir_to_copy_from in dirs_to_copy_from:

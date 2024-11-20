@@ -1,7 +1,8 @@
 import os
 
-dirs_to_copy_from = ['spinup_1500_years']
-dirs_to_copy_to = ['spinup_3000_years', 'spinup_1000_years', 'spinup_500_years']
+dirs_to_copy_from = ['thinning_7_inches_none_out_every_10_years']
+dirs_to_copy_to = ['thinning_7_inches_none_out+fire_every_5_years','thinning_7_inches_none_out+fire_every_10_years','thinning_7_inches_none_out+fire_every_15_years','thinning_7_inches_none_out+fire_every_20_years']
+#dirs_to_copy_to = ['thinning_7_inches_none_out_every_5_years','thinning_7_inches_none_out_every_10_years','thinning_7_inches_none_out_every_15_years','thinning_7_inches_none_out_every_20_years']
 
 dir_current = os.getcwd()
 
